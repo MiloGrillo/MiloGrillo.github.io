@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="main.css">
+    </head>
 <body>
-<h1>Homepage of Milo Grillo</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<h3>Navigation</h3>
-<ul>
-    <li><a href="publications/index.html">Publications</a></li>
-    <li><a href="contact/index.html">Contact Information</a></li>
-</ul>
+    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/assets/php/"; include($IPATH."headernav.html") ?>
+
+    <h1>Homepage of Milo Grillo</h1>
+    <p>I'm hosted with GitHub Pages.</p>
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="publications/index.html">Publications</a></li>
+        <li><a href="contact/index.html">Contact Information</a></li>
+    </ul>
 </body>
 </html>
