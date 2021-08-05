@@ -1,18 +1,36 @@
 <!DOCTYPE html>
+<script type=module src=/main.js></script>
 
 <html>
+
+  <my-header></my-header>
+
   <head>
+    <link rel="stylesheet" href="/main.css">
     <title>Contact - Web Portfolio of Milo</title>
   </head>
   <body>
     <h1>Contact</h1>
 
     <p>
-      You can contact me by email: <a href="mailto:milogrillo@hotmail.com">milogrillo[at]hotmail.com</a>
+      You can contact me by this form.</a>
     </p>
 
-    <p>
-      Milo Grillo<br>
-      Switzerland
-    </p>
+    <form action="https://formspree.io/f/mnqlglzq" method="POST">
+        <label>
+            Your email:
+            <input type="email" name="_replyto" placeholder="Your Email">
+        </label>
+        <label>
+            Your message:
+            <textarea name="message" placeholder="Type your message" required></textarea>
+        </label>
+
+        <button type="submit">Send</button>
+    </form>
+
   </body>
+
+  <my-footer></my-footer>
+
+</html>
