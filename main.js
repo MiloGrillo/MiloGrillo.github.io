@@ -30,7 +30,9 @@ class MyFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
         <footer>
-            © 2021 Milo Grillo
+            <div class="w3-container">
+                © 2021 Milo Grillo
+            </div>
         </footer>
         `
     }
