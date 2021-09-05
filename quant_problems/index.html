@@ -8,9 +8,12 @@
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
         </script>
-        <script type="text/javascript"
+        <script type="text/javascript" charset="utf-8" 
+            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,
+            https://vincenttam.github.io/javascripts/MathJaxLocal.js"></script>
+        <!-- <script type="text/javascript"
             src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        </script>
+        </script> -->
         <script type="text/javascript">
             //<!--
                 function toggle_visibility(id) {
@@ -36,7 +39,7 @@
         <div class="w3-card-4 w3-margin w3-white">
             <div class="w3-container"> 
                 <h3>Correlation. (From D.E. Shaw)</h3>
-                <p>Suppose you have random variables $X_1, X_2 and Y$. The correlations between $X_1$ and $Y$, and between $X_2$ and $Y$ are both $0.02$. 
+                <p>Suppose you have random variables $X_1, X_2$ and $Y$. The correlations between $X_1$ and $Y$, and between $X_2$ and $Y$ are both $0.02$. 
                     What are the upper- and lowerbounds for the correlation between $a \cdot X_1 + b \cdot X_2$ and $Y$, for $a, b$ found via linear regression. <br>
                      <a onclick="toggle_visibility('cor_solution');"><u>Click here to toggle visibility of the solution.</u></a></p>
                 <div id="cor_solution" class="solution"><p>The lower bound is $0.02$ and the upper bound is $1$.</p></div>
@@ -66,7 +69,7 @@
                      <a onclick="toggle_visibility('list_creation2');"><u>Click here to toggle visibility of the solution.</u></a></p>
                 <div id="list_creation2" class="solution"><p>Build a directed graph from the integers found in the subsets. 
                         The neighbours of an integer are the integers on its right in any of the given subsets.
-                        Then use <a href="https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/">topological sorting.</a>.
+                        Then use <a href="https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/">topological sorting</a>.
                     </p>
                 </div>
             </div>
