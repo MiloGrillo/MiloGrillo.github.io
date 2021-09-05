@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<script type=module src=/main.js></script>
+
+<html>
+    <head>
+        <title>Quant (interview) Problems</title>
+        <link rel="stylesheet" href="/main.css">
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <script type="text/javascript">
+            //<!--
+                function toggle_visibility(id) {
+                   var e = document.getElementById(id);
+                   if(e.style.display == 'block')
+                      e.style.display = 'none';
+                   else
+                      e.style.display = 'block';
+                }
+            //-->
+            </script>
+    </head>
+    <body>
+        <my-header></my-header>
+
+        <div class="w3-content" style="max-width: 1400px">
+            
+        <div class="w3-container">
+            <h1>Quant interview problems</h1>
+            <p>Here I show technical problems given in Quant interviews. If you have any more problems or you have improvements for the given solutions, you can send them in via the <a href="/contact/index.html">contact page</a>.</p>
+        </div>
+        
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container"> 
+                <h3>Correlation. (From D.E. Shaw)</h3>
+                <p>Suppose you have random variables $X_1, X_2 and Y$. The correlations between $X_1$ and $Y$, and between $X_2$ and $Y$ are both $0.02$. 
+                    What are the upper- and lowerbounds for the correlation between $a \cdot X_1 + b \cdot X_2$ and $Y$, for $a, b$ found via linear regression. <br>
+                     <a onclick="toggle_visibility('cor_solution');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="cor_solution" class="solution"><p>The lower bound is $0.02$ and the upper bound is $1$.</p></div>
+            </div>
+        </div>
+
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container"> 
+                <h3>The umbrella problem. (From D.E. Shaw)</h3>
+                <p>You have a work place and home. In the morning, you go from home to you work and in the evening vice versa. On every trip, it rains with probability $p$. 
+                    You have one umbrella, which you bring only when it rains. (If it does not rain, you don't bring the umbrella stays at home / at work).
+                    What is the probability of getting wet?<br>
+                     <a onclick="toggle_visibility('umbrella_solution');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="umbrella_solution" class="solution"><p>Consider a Markov chain with two states. Either we are with the umbrella $S_1$ or we are without the umbrella $S_0$.
+                    We set $P_i$ the prob of being is state $S_i$ and $p_{ij}$ the prob of transitioning from state $S_i$ to state $S_j$. 
+                    We note $p_{00} = 0, p_{01} = 1, p_{11} = p, p_{10} = 1-p$. Then we get the set of equations $P_0 = P_1 \cdot ( 1- p ); P_1 = P_0 + P_1 \cdot p$, together with $P_0 + P_1 = 1$. 
+                    Then note $\mathbb{P}[\text{Getting Wet}] = P_0 \cdot p$.
+                    This results in the probability of getting wet being $\frac{1-p}{2-p}p$.</p></div>
+            </div>
+        </div>
+
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container"> 
+                <h3>Recreate a list. (From D.E. Shaw)</h3>
+                <p>Suppose there exists a list consisting of unique integers, unknown to you. You are given a few subsets of this list (in which the order is preserved). 
+                    How can you the original list based on the subsets (perserving order)?<br>
+                     <a onclick="toggle_visibility('list_creation2');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="list_creation2" class="solution"><p>Build a directed graph from the integers found in the subsets. 
+                        The neighbours of an integer are the integers on its right in any of the given subsets.
+                        Then use <a href="https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/">topological sorting.</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container"> 
+                <h3>Escalator. (From Jane Street)</h3>
+                <p>Bob walks up the escalator. If Bob walks at a speed of 1 step / second, then he has time to take 20 steps. If 2 step / s, then he manages 30 steps.
+                    How many steps will he take if he walks with 3 step / s? How many steps will it take if you set its speed to infinity?<br>
+                     <a onclick="toggle_visibility('escalator');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="escalator" class="solution">
+                    <p>We define the constants: total amount of steps on the escalator $M$, and the speed of the escalator $v_e$. Then we have $$M = t \cdot (v_e + v_b)$$
+                    with $v_b$ the speed of Bob and $t$ the amount of time to reach the top. The first time, the total time passed was $20 / 1 = 20$ seconds and the second time $30 / 2 = 15$ seconds.
+                    We then get the system of equations $M = 20(v_e + 1), M=15(v_e + 2)$, from which follows $M=60$ and $v_e=2$. We then fill in for $v_b = 3$ and find $t = 12$, meaning Bob walked $36$ steps. 
+                    If $v_b = \infty$, then clearly the escalator did not contribute, so Bob walked all $M=60$ steps.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container"> 
+                <h3> Paper, Scissors. (From Jane Street)</h3>
+                <p>Rock paper scissors, but the second player is prohibited from playing rock. If you win, you get 1; if you lose, you pay 1.
+                     Find the Nash equilibrium. How much are you willing to pay to play as the first player?<br>
+                     <a onclick="toggle_visibility('paper_scissors');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="paper_scissors" class="solution">
+                    <p> This answer is incomplete: <br>
+                        You clearly never play paper if the opponent never plays rock. So you have to choose the probability $p$ by which to play rock (and play scissors with prob $1-p$). 
+                        The opponent chooses simultaneously paper with probability $q$ and scissors with probability $1-q$. The equilibrium comes with $p = q = \frac{1}{3}$. 
+                        The expected win rate is then $\frac{4}{9}$ and your lose rate is $\frac{1}{9}$. You are willing to pay up to $\frac{1}{3}$ to play.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container"> 
+                <h3> Bear fishing. (From Jane Street)</h3>
+                <p> A bear is fishing in a river. He wants to catch 3 fish. The probability of catching a fish once it swims by is $0.5$. Suppose you are the 5th fish. 
+                    What is the probability of you surviving?<br>
+                     <a onclick="toggle_visibility('bear_fish');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="bear_fish" class="solution">
+                    <p> 
+                        Note that $\mathbb{P}[\text{Survival}] = \mathbb{P}[ \text{3 out of first 4 are caught}] + \mathbb{P}[ \text{Not 3 our of first 4 are caught & you are not caught}]$. 
+                        The first probability on the right hand side equals $\mathbb{P}[\text{3 out of first 4 are caught}] = (1 / 2)^3 + 3 \cdot (1 / 2)^4 = 5 / 16$. 
+                        The second probability on the right hand side then equals to $\mathbb{P}[\text{Not 3 our of first 4 are caught & you are not caught}] = (1 - \frac{5}{16}) (1 / 2) = 11 / 32$
+                        Which implies $\mathbb{P}[\text{Survival}] = 11 / 32 + 5 / 16 = 21 / 32 = 0.65625$.
+                        A little over $0.5$ is to be expected from the problem statement.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container"> 
+                <h3> Dice game. (From Jane Street)</h3>
+                <p> a) Suppose I have a 3d6 and you have a 1d20 and we roll. In case of a tie, we reroll. Is this a fair game.<br>
+                     <a onclick="toggle_visibility('dice_game_a');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="dice_game_a" class="solution">
+                    <p> 
+                        Yes. The expectation of both players is the same, namely $3 \cdot 3.5 = 10.5$, and they are both distributed symmetrically around their expectation.
+                    </p>
+                </div>
+                <p> b) Suppose I have a third player with another 1d20. In case of a two player tie, the two winners reroll without the other one and reroll untill a winner is found.
+                    is this a fair game?<br>
+                    <a onclick="toggle_visibility('dice_game_b');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="dice_game_b" class="solution">
+                    <p> 
+                        The game is not fair anymore. Say $X_i$ is the distribution of the $i$-th player. We now compete not against $X_2$, but against $max(X_2, X_3)$. 
+                        It becomes clear when considering not one extra, but 100 extra players. The probability of one in $101$ players rolling d20s with a result of 19 or 20 is $1 - (0.9)^{101} \approx 1$.
+                        We cannot win whenever at least one player rolls a 19 or 20, and the probability of this happening is already more than $0.99$, so the game is clearly unfair for extra players.
+                        The more extra players, the least fair it becomes.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container"> 
+                <h3> Coin flipping. (From Jane Street)</h3>
+                <p> Two players keep flipping a honest coin. Tail = 0, head = 1. They reach sequences. Example: Tail, tail, head, tail, translates to $0010$. We consider only the last three digits of the sequenc.
+                    If they first see the sequence 001, the first one wins. If first 011, the second wins. 
+                    They keep flipping untill they see either sequence.
+                    Calculate the probability that the first one will win.<br>
+                     <a onclick="toggle_visibility('coin_flip_sequence');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="coin_flip_sequence" class="solution">
+                    <p> 
+                        First one has a higher probability of winning. This can be seen using tree structures. Alternatively one can see this as a markov chain, consisting of states
+                        $000, 001, 010, 011, 100, 101, 110, 111$. We start in a random state. 
+                        The state $011$ can only be reached from $001$ with a probability of $0.5$, but $001$ is itself a terminating state, so in fact $011$ can only be reached upon initiation.
+                        The probability of this happening is $\frac{1}{8}$. In all other cases, we will reach $001 before we reach $011$, meaning we win with probability $\frac{7}{8}$
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container"> 
+                <h3> Robot on a table. (From IMC)</h3>
+                <p>You have a robot standing on a table with width 20cm. It is standing 3cm from the left edge and 17cm from the right edge. 
+                    It takes steps to the left and right with equal probability with size 10cm. How many steps will it take on average before it falls off the edge?<br>
+                     <a onclick="toggle_visibility('robot_on_a_table');"><u>Click here to toggle visibility of the solution.</u></a></p>
+                <div id="robot_on_a_table" class="solution">
+                    <p> 
+                        There are two legit positions on the table, these are 3cm and 13cm. In both positions, they fall off with probability $0.5$. 
+                        This implies a geometric distribution (with parameter $0.5$) of the amount of steps.
+                        And thus an expectation of $1 / 0.5 = 2$ steps before falling off.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- <a href="#" onclick="toggle_visibility('foo');">Click here to toggle visibility of element #foo</a>
+        <div id="foo">This is foo</div> -->
+
+        <my-footer></my-footer>
+        </div>
+
+
+        
+    </body>
+</html>

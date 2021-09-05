@@ -12,6 +12,7 @@ class MyHeader extends HTMLElement {
                             <i class="fa fa-caret-down"></i>
                         </button>    
                         <div class="dropdown-content">
+                            <a href="/quant_problems/index.html">Quant Problems</a>
                             <a href="/recommendations/index.html">Recommendations</a>
                             <a href="/quotes/index.html">Quotes / Wisdoms</a>
                         </div>

@@ -166,7 +166,12 @@ form select {
   text-transform: none;
 }
 
-
+.solution {
+  border: 5px outset red;
+  background-color: lightblue;
+  text-align: center;
+  display: none;
+}
 
 /* w3 style */
 
